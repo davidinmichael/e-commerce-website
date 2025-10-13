@@ -57,7 +57,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_browser_reload",
     "corsheaders",
+    "rest_framework_simplejwt",
     "core",
+    "account",
 ]
 
 MIDDLEWARE = [
@@ -173,15 +175,23 @@ ANYMAIL = {
     "BREVO_API_KEY": os.getenv("EMAIL_API_KEY"),
 }
 
-# AUTH_USER_MODEL = "account.account"
+USE_THOUSAND_SEPARATOR = True
+
+
+AUTH_USER_MODEL = "account.account"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
-        # "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
-    # "EXCEPTION_HANDLER": "core.exceptions.exception_handler.custom_exception_handler",
+    "EXCEPTION_HANDLER": "core.exceptions.exception_handler.custom_exception_handler",
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
