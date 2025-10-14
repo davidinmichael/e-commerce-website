@@ -5,7 +5,7 @@
     <div class="tab-content">
       <div id="tab-1" class="tab-pane fade show p-0 active">
         <!-- Property List -->
-        <div class="row g-4" id="property-list">
+        <div class="row g-4" id="productList">
           <!-- Property cards will be inserted here by JavaScript -->
         </div>
 
@@ -28,10 +28,5 @@
 </div>
 
 {% block script %}
-<script src="{% static 'js/properties.js' %}"></script>
-<script>
-  window.PROPERTIES_CONFIG = {
-    DEFAULT_IMAGE: "{% static 'img/property-1.jpg' %}", // fallback image
-  };
-</script>
+<script src="{% static 'js/products.js' %}"></script>
 {% endblock script %}

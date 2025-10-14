@@ -44,6 +44,8 @@
 
   <body>
     <div class="container-xxl bg-white p-0">
+		{% include "partials/spinner.html" %}
+
       {% include "partials/navbar.html" %} {% if messages %} {% for message in messages %}
       <div class="alert-box" id="alertBox">
         <p class="alert alert-{{ message.tags }}">{{message}}</p>

@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "account",
     "admin_app",
     "frontend",
+    "business",
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "frontend.context_processors.get_whatsapp_link",
                 "frontend.context_processors.get_booking_link",
+                "frontend.context_processors.get_categories",
             ],
         },
     },
