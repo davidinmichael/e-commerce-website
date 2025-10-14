@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="tab-content">
+      <div id="tab-1" class="tab-pane fade show p-0 active">
+        <!-- Property List -->
+        <div class="row g-4" id="property-list">
+          <!-- Property cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div
+          class="d-flex justify-content-center align-items-center mt-4"
+          id="pagination-container"
+        >
+          <button class="btn btn-outline-primary me-2" id="prevPage" disabled>
+            <i class="fa fa-arrow-left me-1"></i> Previous
+          </button>
+          <span id="pageInfo" class="mx-2 text-muted small">Page 1 of 1</span>
+          <button class="btn btn-outline-primary" id="nextPage" disabled>
+            Next <i class="fa fa-arrow-right ms-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block script %}
+<script src="{% static 'js/properties.js' %}"></script>
+<script>
+  window.PROPERTIES_CONFIG = {
+    DEFAULT_IMAGE: "{% static 'img/property-1.jpg' %}", // fallback image
+  };
+</script>
+{% endblock script %}

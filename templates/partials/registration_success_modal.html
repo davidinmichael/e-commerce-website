@@ -1,0 +1,38 @@
+{% load static %}
+<div
+  class="modal fade"
+  id="registrationSuccessModal"
+  tabindex="-1"
+  aria-labelledby="registrationSuccessLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow rounded-3">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="registrationSuccessLabel">Registration Successful</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body text-center p-5">
+        <i class="fa fa-envelope-open-text fa-3x text-primary mb-3"></i>
+        <h4 class="mb-3">Check Your Email</h4>
+        <p class="mb-4">
+          A confirmation link has been sent to your email address.  
+          Please open your inbox and follow the link to complete your registration.
+        </p>
+        <button
+          type="button"
+          class="btn btn-outline-primary px-4"
+          data-bs-dismiss="modal"
+        >
+          Okay, Got It
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+{% load static %}
+<div class="container-fluid nav-bar bg-transparent">
+  <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+    <a
+      href="{% url 'home' %}"
+      class="navbar-brand d-flex align-items-center text-center"
+    >
+      <div class="icon p-2 me-2">
+        <img
+          class="img-fluid"
+          src="{% static 'img/icon-deal.png' %}"
+          alt="Icon"
+          style="width: 30px; height: 30px"
+        />
+      </div>
+      <h1 class="m-0 text-primary">RestInn</h1>
+    </a>
+    <button
+      type="button"
+      class="navbar-toggler"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto">
+        <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+        <a href="{% url 'properties' %}" class="nav-item nav-link">Find a Place</a>
+        <a href="{% url 'about_us' %}" class="nav-item nav-link">About</a>
+        <!-- <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+            >Find a Place</a
+          >
+          <div class="dropdown-menu rounded-0 m-0">
+            <a href="{% url 'home' %}" class="dropdown-item">Hotels</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Hostels</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Short-Term Rentals</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Long-Term Rentals</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Houses for Sale</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Commercial Properties</a>
+            <a href="{% url 'home' %}" class="dropdown-item">Land</a>
+          </div>
+        </div> -->
+        <!-- <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+            >Pages</a
+          >
+          <div class="dropdown-menu rounded-0 m-0">
+            <a href="{% url 'home' %}" class="dropdown-item">Testimonial</a>
+            <a href="{% url 'home' %}" class="dropdown-item">404 Error</a>
+          </div>
+        </div> -->
+        <a href="#contactUs" class="nav-item nav-link">Contact</a>
+      </div>
+      <a href="{{WHATSAPP_LINK}}" target="_blank" class="btn btn-primary px-3 d-none d-lg-flex">Become an Agent</a>
+    </div>
+  </nav>
+</div>

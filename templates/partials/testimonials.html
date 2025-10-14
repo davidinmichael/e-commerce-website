@@ -1,0 +1,82 @@
+{% load static %}
+<div class="container-xxl py-5">
+  <div class="container">
+    <div
+      class="text-center mx-auto mb-5 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="max-width: 600px"
+    >
+      <h1 class="mb-3">Our Clients Say!</h1>
+      <p>
+        We’ve helped families, travelers, students, and property owners find
+        exactly what they need — from short-term stays to dream homes. Here’s
+        what some of our clients have shared about their experience with us.
+      </p>
+    </div>
+    <div
+      class="owl-carousel testimonial-carousel wow fadeInUp"
+      data-wow-delay="0.1s"
+    >
+      <div class="testimonial-item bg-light rounded p-3">
+        <div class="bg-white border rounded p-4">
+          <p>
+            I needed a short-term apartment for my business trip, and I found
+            the perfect one within minutes. The booking process was smooth, and
+            the place looked exactly like the pictures.
+          </p>
+          <div class="d-flex align-items-center">
+            <img
+              class="img-fluid flex-shrink-0 rounded"
+              src="{% static 'img/testimonial-1.jpg' %}"
+              style="width: 45px; height: 45px"
+            />
+            <div class="ps-3">
+              <h6 class="fw-bold mb-1">Ibrahim</h6>
+              <small>Business Consultant</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-item bg-light rounded p-3">
+        <div class="bg-white border rounded p-4">
+          <p>
+            This platform made it easy to compare different hotels in Lagos
+            before booking. I saved money and stayed in a great location close
+            to everything I needed
+          </p>
+          <div class="d-flex align-items-center">
+            <img
+              class="img-fluid flex-shrink-0 rounded"
+              src="{% static 'img/testimonial-2.jpg' %}"
+              style="width: 45px; height: 45px"
+            />
+            <div class="ps-3">
+              <h6 class="fw-bold mb-1">Fola W.</h6>
+              <small>Event Planner</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-item bg-light rounded p-3">
+        <div class="bg-white border rounded p-4">
+          <p>
+            I was relocating for school and quickly found a safe hostel through
+            this platform. The search filters helped me narrow it down to
+            affordable options near campus.
+          </p>
+          <div class="d-flex align-items-center">
+            <img
+              class="img-fluid flex-shrink-0 rounded"
+              src="{% static 'img/testimonial-3.jpg' %}"
+              style="width: 45px; height: 45px"
+            />
+            <div class="ps-3">
+              <h6 class="fw-bold mb-1">Grace Obi</h6>
+              <small>Student</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

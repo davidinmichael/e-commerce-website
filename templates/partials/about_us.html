@@ -1,0 +1,35 @@
+{% load static %}
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="about-img position-relative overflow-hidden p-5 pe-0">
+          <img class="img-fluid w-100" src="{% static 'img/about.jpg' %}" />
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+        <h1 class="mb-4">Your Trusted Partner in Finding Properties</h1>
+        <p class="mb-4">
+          We make it simple for you to find the right place — whether you’re
+          booking a hotel, renting a home, buying land, or investing in real
+          estate. Our platform connects you with verified listings, trusted
+          agents, and properties across Nigeria to help you make confident
+          decisions.
+        </p>
+        <p>
+          <i class="fa fa-check text-primary me-3"></i>Wide range of hotels,
+          rentals, and homes
+        </p>
+        <p>
+          <i class="fa fa-check text-primary me-3"></i>Verified listings and
+          trusted agents
+        </p>
+        <p>
+          <i class="fa fa-check text-primary me-3"></i>Easy search, filter, and
+          contact options
+        </p>
+        <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'properties' %}">Find a Place</a>
+      </div>
+    </div>
+  </div>
+</div>

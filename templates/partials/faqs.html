@@ -1,0 +1,43 @@
+{% load static %}
+<!-- FAQ Section Start -->
+<div class="container py-5" id="faq">
+  <div class="text-center mb-5">
+    <h1 class="mb-3">Frequently Asked Questions</h1>
+    <p>
+      Find quick answers to common questions about booking stays, listing properties,
+      and using RestInn.
+    </p>
+  </div>
+
+  <div class="accordion" id="faqAccordion">
+    {% for faq in faqs %}
+    <div class="accordion-item mb-3">
+      <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+        <button
+          class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapse{{ forloop.counter }}"
+          aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-controls="collapse{{ forloop.counter }}"
+        >
+          {{ faq.question }}
+        </button>
+      </h2>
+      <div
+        id="collapse{{ forloop.counter }}"
+        class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+        aria-labelledby="heading{{ forloop.counter }}"
+        data-bs-parent="#faqAccordion"
+      >
+        <div class="accordion-body">
+          {{ faq.answer }}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No FAQs available at the moment.</p>
+    {% endfor %}
+  </div>
+</div>
+<!-- FAQ Section End -->
