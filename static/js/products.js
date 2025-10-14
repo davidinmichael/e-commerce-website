@@ -169,9 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add to Cart (placeholder logic)
   document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("add-to-cart-btn")) {
+	  if (e.target.classList.contains("add-to-cart-btn")) {
       const id = e.target.dataset.id;
-      toastAlert("success", `Product ${id} added to cart (soon...)`);
+      toastAlert(
+        `Product ${id} added to cart (soon...)`,
+        "toast-success",
+        "fa-circle-check"
+      );
     }
   });
 

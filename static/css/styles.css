@@ -32,7 +32,7 @@ img {
 
 .toast,
 .alert {
-  background-color: var(--white);
+  background-color: var(--white-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
