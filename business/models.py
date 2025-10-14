@@ -15,7 +15,11 @@ class Category(BaseModel):
 class Product(BaseModel):
     title = models.CharField(max_length=100)
     created_by = models.ForeignKey(
-        Account, on_delete=models.CASCADE, related_name="products"
+        Account,
+        on_delete=models.CASCADE,
+        related_name="products",
+        null=True,
+        blank=True,
     )
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True

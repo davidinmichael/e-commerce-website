@@ -10,6 +10,7 @@ urlpatterns = [
     path("", include("core.urls")),
     path("", include("frontend.urls")),
     path("account/", include("account.urls")),
+    path("business/", include("business.urls")),
 ]
 
 if settings.DEBUG:

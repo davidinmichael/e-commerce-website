@@ -488,3 +488,18 @@ img {
   padding-right: 0;
   border-right: none;
 }
+
+.product-card img {
+  height: 220px;
+  object-fit: cover;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+.product-card .card-body {
+  padding: 1rem 1.25rem;
+}
