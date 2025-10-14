@@ -503,3 +503,22 @@ img {
 .product-card .card-body {
   padding: 1rem 1.25rem;
 }
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.view-details-btn,
+.add-to-cart-btn {
+  min-height: 44px;  
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .d-flex.gap-2 {
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+}

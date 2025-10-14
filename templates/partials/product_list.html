@@ -54,7 +54,7 @@
         <!-- Pagination Controls -->
         <div
           class="d-flex justify-content-center align-items-center mt-4"
-          id="pagination-container"
+          id="paginationContainer"
         >
           <button class="btn btn-outline-primary me-2" id="prevPage" disabled>
             <i class="fa fa-arrow-left me-1"></i> Previous
@@ -70,5 +70,5 @@
 </div>
 
 {% block script %}
-<script src="{% static 'js/products.js' %}"></script>
+<script type="module" src="{% static 'js/products.js' %}"></script>
 {% endblock script %}
