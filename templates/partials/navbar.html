@@ -8,12 +8,12 @@
       <div class="icon p-2 me-2">
         <img
           class="img-fluid"
-          src="{% static 'img/icon-deal.png' %}"
-          alt="Icon"
+          src="{{STORE_LOGO}}"
+          alt="Store Logo"
           style="width: 30px; height: 30px"
         />
       </div>
-      <h1 class="m-0 text-primary">E-Commerce</h1>
+      <h1 class="m-0 text-primary h3">{{STORE_NAME}}</h1>
     </a>
     <button
       type="button"
@@ -26,10 +26,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto">
         <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-        <a href="{% url 'test_view' %}" class="nav-item nav-link">Products</a>
+        <a href="#productList" class="nav-item nav-link">Products</a>
         <a href="{% url 'test_view' %}" class="nav-item nav-link">Cart</a>
     
-        <a href="#contactUs" class="nav-item nav-link">About</a>
+        <a href="#aboutUs" class="nav-item nav-link">About</a>
       </div>
       <a href="{{WHATSAPP_LINK}}" target="_blank" class="btn btn-primary px-3 d-none d-lg-flex">Contact Us</a>
     </div>

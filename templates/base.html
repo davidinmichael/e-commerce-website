@@ -10,7 +10,7 @@
     <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link href="{% static 'img/favicon.ico' %}" rel="icon" />
+    <link href="{{STORE_LOGO}}" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,18 +22,22 @@
 
     <!-- Icon Font Stylesheet -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
       rel="stylesheet"
     />
 
-	
-    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
 
@@ -44,9 +48,8 @@
 
   <body>
     <div class="container-xxl bg-white p-0">
-		{% include "partials/spinner.html" %}
-
-      {% include "partials/navbar.html" %} {% if messages %} {% for message in messages %}
+      {% include "partials/spinner.html" %} {% include "partials/navbar.html" %}
+      {% if messages %} {% for message in messages %}
       <div class="alert-box" id="alertBox">
         <p class="alert alert-{{ message.tags }}">{{message}}</p>
       </div>
@@ -55,6 +58,9 @@
       <div class="toast-box" id="toastBox"></div>
 
       <div class="main">{% block content %} {% endblock content %}</div>
+      {% include "partials/cta.html" %}
+	  {% include "partials/faqs.html" %}
+	  {% include "partials/footer.html" %}
 
       <!-- Back to Top -->
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
@@ -69,7 +75,6 @@
       crossorigin="anonymous"
     ></script>
 
-	
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="{% static 'lib/wow/wow.min.js' %}"></script>
     <script src="{% static 'lib/easing/easing.min.js' %}"></script>

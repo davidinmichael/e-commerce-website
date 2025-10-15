@@ -64,3 +64,8 @@ class Product(BaseModel):
                 counter += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+
+class FAQ(BaseModel):
+    question = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
