@@ -1,0 +1,68 @@
+<!-- Single unified carousel -->
+  <div class="categories-carousel listings-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+      {% for listing in listings %}
+      <div class="categories-item p-4 h-100">
+        <div class="categories-item-inner d-flex flex-column h-100">
+
+          <!-- Media: video if exists, otherwise image -->
+          <div class="categories-img rounded-top flex-shrink-0" style="position: relative;">
+            {% if listing.video_url %}
+              <video class="listing-video w-100 rounded-top" autoplay muted loop playsinline preload="metadata"
+                     style="max-height: 320px; width:100%; object-fit: cover; display: block;">
+                <source src="{{ listing.video_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {% elif listing.image %}
+              <img src="{{ listing.image.url }}" alt="{{ listing.title }}"
+                   class="img-fluid w-100 rounded-top card-img-top">
+            {% else %}
+              <!-- fallback placeholder -->
+              <div style="height:320px; display:flex; align-items:center; justify-content:center; background:#f5f5f5; border-radius:6px;">
+                <span style="color:#999;">No media available</span>
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Content -->
+          <div class="categories-content rounded-bottom p-4 mt-auto" style="min-height: 170px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+              <div style="flex:1;">
+                <h4 style="margin:0 0 6px 0;">{{ listing.title }}</h4>
+                <p class="text-muted" style="font-size:0.9em; margin:0 0 10px 0;">
+                  {{ listing.description|truncatewords:18 }}
+                </p>
+              </div>
+
+              <!-- <div style="flex-shrink:0; text-align:right;">
+                <div style="background:#fff; color:#0d6efd; border-radius:999px; padding:8px 14px; font-weight:600;">
+                  {{ listing.formatted_price }}
+                </div>
+              </div> -->
+            </div>
+
+            <div class="row gy-2 gx-0 text-center mb-3" style="margin-top:12px;">
+              <div class="col-4 border-end border-white" style="padding-top:8px;">
+                <i class="fa fa-users text-dark"></i>
+                <span class="text-body ms-1">{{ listing.capacity }} Seat{% if listing.capacity > 1 %}s{% endif %}</span>
+              </div>
+              <div class="col-4 border-end border-white" style="padding-top:8px;">
+                <i class="fa fa-tag text-dark"></i>
+                <span class="text-body ms-1">{{ listing.formatted_price }}</span>
+              </div>
+              <div class="col-4" style="padding-top:8px;">
+                <i class="fa fa-calendar text-dark"></i>
+                <span class="text-body ms-1">{{ listing.location }}</span>
+              </div>
+            </div>
+
+            <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-2">Book Now</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center">No listings available right now.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- End Categories Showcase -->
