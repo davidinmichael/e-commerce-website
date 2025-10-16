@@ -17,7 +17,15 @@ class ProductDetail(View):
         except Product.DoesNotExist:
             messages.error(request, "Invalid product!")
             return redirect("home")
+        category = product.category
+        related_products = (
+            Product.objects.filter(category=category).order_by("?")[:9]
+            if category
+            else []
+        )
+        print(f"Products: {related_products}")
         context = {
             "product": product,
+            "related_products": related_products,
         }
         return render(request, "frontend/product_detail.html", context)
