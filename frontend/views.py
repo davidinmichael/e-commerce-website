@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.views import View
-
+from django.conf import settings
 from business.models import Product
 from urllib.parse import quote
 from dotenv import load_dotenv
@@ -40,3 +40,11 @@ class ProductDetail(View):
             "whatsapp_link": f"https://wa.me/{whatsapp_number}?text={encoded_message}",
         }
         return render(request, "frontend/product_detail.html", context)
+
+class CartPage(View):
+    def get(self, request):
+        context = {
+            "ENABLE_ONLINE_PAYMENTS": settings.ENABLE_ONLINE_PAYMENTS,
+            "WHATSAPP_NUMBER": os.getenv("WHATSAPP_NUMBER"),
+        }
+        return render(request, "frontend/cart.html", context)

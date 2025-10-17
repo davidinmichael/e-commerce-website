@@ -70,6 +70,14 @@ img {
 .back-to-top {
   position: fixed;
   display: none;
+  left: 45px;
+  bottom: 45px;
+  z-index: 99;
+}
+
+.show-cart {
+  position: fixed;
+  display: none;
   right: 45px;
   bottom: 45px;
   z-index: 99;
@@ -520,5 +528,33 @@ img {
   .d-flex.gap-2 {
     gap: 0.5rem;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px;
+  }
+
+  .cart-card img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .cart-card .btn {
+    padding: 4px 8px !important;
+  }
+
+  .cart-card .fw-bold {
+    font-size: 0.95rem;
+  }
+
+  .cart-card .price-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
