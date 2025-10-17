@@ -62,7 +62,19 @@
         {% endif %}
 
         <div class="mt-4">
-          <button class="btn btn-dark me-2 px-4 py-2">Add to Cart</button>
+          <button
+            class="btn btn-dark me-2 px-4 py-2 add-to-cart-btn"
+            data-product='{
+    "id": "{{ product.id }}",
+    "title": "{{ product.title }}",
+    "price": "{{ product.price }}",
+    "discount": "{{ product.discount }}",
+    "featured_image": "{{ product.featured_image }}",
+    "slug": "{{ product.slug }}"
+  }'
+          >
+            Add to Cart
+          </button>
           {% if ENABLE_ONLINE_PAYMENTS %}
           <a href="#" class="btn btn-outline-dark px-4 py-2">Buy Now</a>
           {% else %}
@@ -111,7 +123,14 @@
 
               <button
                 class="btn btn-dark d-flex align-items-center justify-content-center flex-fill add-to-cart-btn"
-                data-id="{{product.id}}"
+                data-product='{
+    "id": "{{ product.id }}",
+    "title": "{{ product.title }}",
+    "price": "{{ product.price }}",
+    "discount": "{{ product.discount }}",
+    "featured_image": "{{ product.featured_image }}",
+    "slug": "{{ product.slug }}"
+  }'
                 type="button"
               >
                 Add to Cart
@@ -124,4 +143,6 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock content %} {% block script %}
+<script type="module" src="{% static 'js/cart.js' %}"></script>
+{% endblock script %}

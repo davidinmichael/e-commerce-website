@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1;
   const perPage = 9;
 
-
-
   // Fetch all products
   async function fetchProducts() {
     try {
@@ -68,7 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <button
             class="btn btn-dark d-flex align-items-center justify-content-center flex-fill add-to-cart-btn"
-            data-id="${product.id}"
+            data-product='${JSON.stringify({
+              id: product.id,
+              title: product.title,
+              price: product.price,
+              discount: product.discount,
+              featured_image: imgUrl,
+              slug: product.slug,
+            })}'
             type="button"
           >
             Add to Cart
@@ -167,21 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     currentPage = 1;
     displayProducts(filtered);
-  });
-
-  // Add to Cart (placeholder logic)
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("add-to-cart-btn")) {
-      const id = e.target.dataset.id;
-      console.log("Button clicked");
-      console.log(`Button ${id}`);
-      toastAlert(
-        `Product ${id} added to cart (soon...)`,
-        "toast-success",
-        "fa-circle-check"
-      );
-    }
   });
 
   // Initialize

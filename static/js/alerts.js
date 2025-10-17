@@ -7,4 +7,5 @@ document.addEventListener("DOMContentLoaded", function () {
     "toast-success",
     "fa-circle-check"
   );
+
 });

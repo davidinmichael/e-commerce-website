@@ -27,7 +27,7 @@ img {
   top: 10vh;
   height: 300px;
   right: 5%;
-  z-index: 9999;
+  z-index: 99999;
 }
 
 .toast,
