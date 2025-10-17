@@ -44,7 +44,8 @@ elif ENV == "dev":
 else:
     BASE_URL = os.getenv("PROD_BASE_URL")
 
-
+ENABLE_ONLINE_PAYMENTS = False
+ENABLE_LIVE_PAYSTACK = False
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,6 +93,7 @@ TEMPLATES = [
                 "frontend.context_processors.get_categories",
                 "frontend.context_processors.get_contact_details",
                 "frontend.context_processors.get_faqs",
+                "frontend.context_processors.get_payment_states",
             ],
         },
     },
