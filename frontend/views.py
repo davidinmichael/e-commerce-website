@@ -13,6 +13,10 @@ def home_view(request):
     return render(request, "frontend/index.html")
 
 
+def products_page(request):
+    return render(request, "frontend/products.html")
+
+
 class ProductDetail(View):
 
     def get(self, request, slug):
