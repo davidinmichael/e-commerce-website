@@ -11,6 +11,7 @@ urlpatterns = [
     path("", include("frontend.urls")),
     path("account/", include("account.urls")),
     path("business/", include("business.urls")),
+    path("admin-space/", include("admin_app.urls")),
 ]
 
 if settings.DEBUG:

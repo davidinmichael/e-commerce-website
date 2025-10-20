@@ -8,12 +8,16 @@
       <div class="icon p-2 me-2">
         <img
           class="img-fluid"
-          src="{% static 'img/icon-deal.png' %}"
-          alt="Icon"
+          src="{{STORE_LOGO}}"
+          alt="Store Logo"
           style="width: 30px; height: 30px"
         />
       </div>
-      <h1 class="m-0 text-primary">RestInn</h1>
+      {% if request.user.is_authenticated %}
+      <h1 class="m-0 text-primary h3">Hello {{request.user.first_name}}</h1>
+      {% else %}
+      <h1 class="m-0 text-primary h3">{{STORE_NAME}}</h1>
+      {% endif %}
     </a>
     <button
       type="button"
@@ -26,34 +30,25 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto">
         <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-        <a href="{% url 'properties' %}" class="nav-item nav-link">Find a Place</a>
-        <a href="{% url 'about_us' %}" class="nav-item nav-link">About</a>
-        <!-- <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-            >Find a Place</a
-          >
-          <div class="dropdown-menu rounded-0 m-0">
-            <a href="{% url 'home' %}" class="dropdown-item">Hotels</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Hostels</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Short-Term Rentals</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Long-Term Rentals</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Houses for Sale</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Commercial Properties</a>
-            <a href="{% url 'home' %}" class="dropdown-item">Land</a>
-          </div>
-        </div> -->
-        <!-- <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-            >Pages</a
-          >
-          <div class="dropdown-menu rounded-0 m-0">
-            <a href="{% url 'home' %}" class="dropdown-item">Testimonial</a>
-            <a href="{% url 'home' %}" class="dropdown-item">404 Error</a>
-          </div>
-        </div> -->
-        <a href="#contactUs" class="nav-item nav-link">Contact</a>
+        <a href="{% url 'products' %}" class="nav-item nav-link">Products</a>
+        <a href="{% url 'cart' %}" class="nav-item nav-link">Orders</a>
+
+        <a href="#aboutUs" class="nav-item nav-link">About</a>
+        {% if request.user.is_authenticated %}
+        <a
+          href="{% url 'logout' %}"
+          class="nav-item nav-link btn-danger px-3 text-light"
+          >Logout</a
+        >
+        {% else %}
+        <a
+          href="{% url 'login_admin' %}"
+          class="nav-item nav-link btn-danger px-3 text-light"
+          >Login</a
+        >
+
+        {% endif %}
       </div>
-      <a href="{{WHATSAPP_LINK}}" target="_blank" class="btn btn-primary px-3 d-none d-lg-flex">Become an Agent</a>
     </div>
   </nav>
 </div>

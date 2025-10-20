@@ -1,0 +1,107 @@
+{% extends "admin_base.html" %} {% load static %} {% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            {% if STORE_LOGO %}
+            <img
+              src="{{ STORE_LOGO }}"
+              alt="Store Logo"
+              class="img-fluid mb-3"
+              style="max-width: 80px"
+            />
+            {% else %}
+            <h4 class="fw-bold">Admin Registration</h4>
+            {% endif %}
+            <p class="text-muted">Create a new administrator account</p>
+          </div>
+
+          <form method="post" action="{% url 'register_admin' %}">
+            {% csrf_token %}
+
+            <!-- First Name -->
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                name="first_name"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last_name"
+                name="last_name"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-3">
+              <label for="phone_number" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone_number"
+                name="phone_number"
+                placeholder="Enter phone number"
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Register
+              </button>
+            </div>
+
+            <p class="text-center mt-3 mb-0">
+              Already have an account?
+              <a href="{% url 'login_admin' %}" class="text-decoration-none"
+                >Login here</a
+              >
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
