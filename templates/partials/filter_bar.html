@@ -1,0 +1,49 @@
+{% load static %}
+<div
+  class="container-fluid bg-primary mb-2 wow fadeIn"
+  data-wow-delay="0.1s"
+  style="padding: 35px"
+>
+  <div class="container">
+    <div class="row g-2">
+      <div class="col-md-12">
+        <div class="row g-2">
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control border-0 py-3"
+              placeholder="Search Products"
+              id="searchProductKeyword"
+            />
+          </div>
+          <div class="col-md-3">
+            <select class="form-select border-0 py-3" id="searchProductCategory">
+              <option selected>Category</option>
+              {% for category in categories %}
+              <option value="{{category.id}}">{{category.name}}</option>
+
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select border-0 py-3" id="searchProductStatus">
+              <option selected>Status</option>
+              <option value="true">Published</option>
+              <option value="false">Draft</option>
+
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select border-0 py-3" id="searchProductStock">
+              <option selected>Stock Status</option>
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+
+            </select>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

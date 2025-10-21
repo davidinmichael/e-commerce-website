@@ -25,5 +25,6 @@ class ProductSerializer(serializers.ModelSerializer):
             "discount",
             "images",
             "featured_image",
-            "inventory_count"
+            "inventory_count",
+            "is_published",
         ]

@@ -1,0 +1,62 @@
+{% load static %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">My Products</h4>
+    <a href="#" class="btn btn-primary">+ Add Product</a>
+  </div>
+
+  <div class="row g-3" id="adminProductList">
+    <!-- Dummy Product Card -->
+    {% for i in "123456"|make_list %}
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+      <div class="card shadow-sm h-100">
+        <img
+          src="https://res.cloudinary.com/dskpdlvxu/image/upload/v1759765735/property-6_c9imin.jpg"
+          class="card-img-top"
+          alt="Product {{ i }}"
+          style="
+            height: 150px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+          "
+        />
+        <div class="card-body">
+          <h6 class="card-title text-truncate mb-2">Sample Product {{ i }}</h6>
+          <p class="text-muted small mb-1">₦{{ 5000|add:i|add:"00" }}</p>
+          <p class="text-success small mb-1">Discount: 10%</p>
+          <p class="text-success small mb-1">Stock: 10</p>
+          <p class="small text-secondary mb-2">Category: Electronics</p>
+          <div class="d-flex">
+            <a href="#" class="mx-2 btn btn-sm btn-outline-primary"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+            <a href="#" class="mx-2 btn btn-sm btn-outline-secondary"
+              ><i class="fa-solid fa-eye-slash"></i
+            ></a>
+            <a href="#" class="mx-2 btn btn-sm btn-outline-danger"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination Controls -->
+  <div
+    class="d-flex justify-content-center align-items-center mt-4"
+    id="adminPaginationContainer"
+  >
+    <button class="btn btn-outline-primary me-2" id="adminProductPrevPage" disabled>
+      <i class="fa fa-arrow-left me-1"></i> Previous
+    </button>
+    <span id="pageInfo" class="mx-2 text-muted small">Page 1 of 1</span>
+    <button class="btn btn-outline-primary" id="adminProductNextPage" disabled>
+      Next <i class="fa fa-arrow-right ms-1"></i>
+    </button>
+  </div>
+</div>
+{% block script %}
+<script type="module" src="{% static 'js/adminListProducts.js' %}"></script>
+{% endblock script %}

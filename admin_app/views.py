@@ -65,3 +65,6 @@ class DashboardView(View):
             messages.error(request, "You don't have permission to access this page.")
             return redirect("login_admin")
         return render(request, "admin_app/dashboard.html")
+
+def list_products(request):
+    return render(request, "admin_app/list_products.html")
