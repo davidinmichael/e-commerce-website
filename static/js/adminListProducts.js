@@ -172,6 +172,54 @@ document.addEventListener("DOMContentLoaded", function () {
     displayProducts(filtered);
   });
 
+  // Common filter function — reuse for all filter changes
+  function applyProductFilters() {
+    const keyword = searchProductKeyword.value.toLowerCase().trim();
+    const category = searchProductCategory.value;
+    const status = searchProductStatus.value;
+    const stock = searchProductStock.value;
+
+    let filtered = allProducts;
+
+    // Keyword filter
+    if (keyword) {
+      filtered = filtered.filter((p) =>
+        p.title.toLowerCase().includes(keyword)
+      );
+    }
+
+    // Category filter
+    if (category && category !== "Category") {
+      filtered = filtered.filter((p) => {
+        const categoryId = p.category?.id || p.category;
+        return String(categoryId) === String(category);
+      });
+    }
+
+    // Status filter (Published / Draft)
+    if (status && status !== "Status") {
+      const isPublished = status === "true";
+      filtered = filtered.filter((p) => p.is_published === isPublished);
+    }
+
+    // Stock filter (In Stock / Out of Stock)
+    if (stock && stock !== "Stock Status") {
+      const inStock = stock === "true";
+      filtered = filtered.filter((p) =>
+        inStock ? p.inventory_count > 0 : p.inventory_count <= 0
+      );
+    }
+
+    currentPage = 1;
+    displayProducts(filtered);
+  }
+
+  // Apply filters on all relevant events
+  searchProductKeyword.addEventListener("input", applyProductFilters);
+  searchProductCategory.addEventListener("change", applyProductFilters);
+  searchProductStatus.addEventListener("change", applyProductFilters);
+  searchProductStock.addEventListener("change", applyProductFilters);
+
   fetchProducts();
   // Page ends
 });

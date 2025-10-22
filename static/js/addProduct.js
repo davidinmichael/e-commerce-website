@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Submitting product payload:", payload);
 
     try {
-      const response = await fetch("/admin-space/products/", {
+      const response = await fetch("/business/admin-products/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         alert("Product successfully created!");
-        window.location.href = "/business/products/";
+        window.location.href = "/admin-space/products/";
       } else {
         console.error("Error response:", data);
         alert(
