@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold">My Products</h4>
-    <a href="#" class="btn btn-primary">+ Add Product</a>
+    <a href="{% url 'add_product' %}" class="btn btn-primary">+ Add Product</a>
   </div>
 
   <div class="row g-3" id="adminProductList">
@@ -48,7 +48,11 @@
     class="d-flex justify-content-center align-items-center mt-4"
     id="adminPaginationContainer"
   >
-    <button class="btn btn-outline-primary me-2" id="adminProductPrevPage" disabled>
+    <button
+      class="btn btn-outline-primary me-2"
+      id="adminProductPrevPage"
+      disabled
+    >
       <i class="fa fa-arrow-left me-1"></i> Previous
     </button>
     <span id="pageInfo" class="mx-2 text-muted small">Page 1 of 1</span>

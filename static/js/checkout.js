@@ -1,7 +1,7 @@
 import { getCSRFToken, toastAlert, autoFadeAlerts } from "/static/js/utils.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const cartKey = "cartItems";
+  const cartKey = "cart";
   let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
   // cart.js

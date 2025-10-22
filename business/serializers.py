@@ -28,3 +28,21 @@ class ProductSerializer(serializers.ModelSerializer):
             "inventory_count",
             "is_published",
         ]
+
+
+class AddProductSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = [
+            "title",
+            "category",
+            "description",
+            "features",
+            "price",
+            "discount",
+            "images",
+            "featured_image",
+            "inventory_count",
+            "is_published",
+        ]

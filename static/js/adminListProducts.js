@@ -126,6 +126,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Search + Filter
+  searchProductKeyword.addEventListener("input", () => {
+    const keyword = searchProductKeyword.value.toLowerCase().trim();
+    const category = searchProductCategory.value;
+
+    let filtered = allProducts;
+
+    if (keyword) {
+      filtered = filtered.filter((p) =>
+        p.title.toLowerCase().includes(keyword)
+      );
+    }
+
+    if (category && category !== "Category") {
+      filtered = filtered.filter(
+        (p) => String(p.category) === String(category)
+      );
+    }
+
+    currentPage = 1;
+    displayProducts(filtered);
+  });
+
+  searchProductCategory.addEventListener("change", () => {
+    const keyword = searchProductKeyword.value.toLowerCase().trim();
+    const category = searchProductCategory.value;
+
+    let filtered = allProducts;
+
+    if (keyword) {
+      filtered = filtered.filter((p) =>
+        p.title.toLowerCase().includes(keyword)
+      );
+    }
+
+    if (category && category !== "Category") {
+      filtered = filtered.filter((p) => {
+        const categoryId = p.category?.id || p.category;
+        return String(categoryId) === String(category);
+      });
+    }
+
+    currentPage = 1;
+    displayProducts(filtered);
+  });
+
   fetchProducts();
   // Page ends
 });

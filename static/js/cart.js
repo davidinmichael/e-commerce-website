@@ -1,7 +1,8 @@
 import { toastAlert } from "/static/js/utils.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartKey = "cart";
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("add-to-cart-btn")) {
@@ -49,5 +50,4 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Cart:", cart);
     }
   });
-
 });

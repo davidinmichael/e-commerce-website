@@ -42,23 +42,45 @@ export function autoFadeAlerts() {
   }, 3000);
 }
 
-
 const cloudName = "dskpdlvxu";
-const uploadPreset = "unsigned_dbookdraft";
+const uploadPreset = "e_commerce_website";
 
 /**
- * Binds an input file element to upload to Cloudinary
- * @param {string} fileInputId - ID of the <input type="file">
- * @param {string} hiddenInputId - ID of the hidden input where the uploaded URL should go
- * @param {string} label - Label for logs / error messages (e.g. "Logo", "Signature")
+ * Bind an <input type="file"> to auto-upload to Cloudinary.
+ * Automatically updates a hidden field with the uploaded image URL.
+ *
+ * @param {HTMLInputElement} fileInput - The visible <input type="file">
+ * @param {HTMLInputElement} hiddenInput - The hidden <input> for the image URL
+ * @param {string} label - Descriptive label for error messages (e.g., "Featured Image")
  */
-export function bindImageUploader(fileInputId, hiddenInputId, label) {
-  const input = document.getElementById(fileInputId);
-  if (!input) return;
+export function bindImageUploader(fileInput, hiddenInput, label = "Image") {
+  if (!fileInput) return;
 
-  input.addEventListener("change", async function (event) {
+  fileInput.addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (!file) return;
+
+    // Restrict file type
+    if (!file.type.startsWith("image/")) {
+      alert(`${label} must be an image file.`);
+      fileInput.value = "";
+      return;
+    }
+
+    // Restrict file size (5MB max)
+    const maxSizeMB = 5;
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert(`${label} is too large. Maximum size is ${maxSizeMB}MB.`);
+      fileInput.value = "";
+      return;
+    }
+
+    // Display loading indicator (optional)
+    const originalBtnText = fileInput.nextElementSibling?.innerText;
+    fileInput.disabled = true;
+    if (fileInput.closest(".input-group")) {
+      fileInput.closest(".input-group").classList.add("opacity-50");
+    }
 
     const formData = new FormData();
     formData.append("file", file);
@@ -67,16 +89,13 @@ export function bindImageUploader(fileInputId, hiddenInputId, label) {
     try {
       const response = await fetch(
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
+        { method: "POST", body: formData }
       );
 
       const data = await response.json();
 
       if (data.secure_url) {
-        document.getElementById(hiddenInputId).value = data.secure_url;
+        hiddenInput.value = data.secure_url;
         console.log(`${label} uploaded:`, data.secure_url);
       } else {
         console.error(`${label} upload failed:`, data);
@@ -85,8 +104,14 @@ export function bindImageUploader(fileInputId, hiddenInputId, label) {
     } catch (error) {
       console.error(`Error uploading ${label}:`, error);
       alert(`An error occurred while uploading the ${label}.`);
+    } finally {
+      fileInput.disabled = false;
+      if (fileInput.closest(".input-group")) {
+        fileInput.closest(".input-group").classList.remove("opacity-50");
+      }
+      if (originalBtnText) {
+        fileInput.nextElementSibling.innerText = originalBtnText;
+      }
     }
   });
 }
-
-

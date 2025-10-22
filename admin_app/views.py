@@ -66,5 +66,12 @@ class DashboardView(View):
             return redirect("login_admin")
         return render(request, "admin_app/dashboard.html")
 
+
 def list_products(request):
     return render(request, "admin_app/list_products.html")
+
+
+class AddProductView(View):
+
+    def get(self, request):
+        return render(request, "admin_app/add_product.html")
