@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCart();
   }
 
-  console.log("Cart page script loaded");
 
   const cartContainer = document.getElementById("cartItems");
 

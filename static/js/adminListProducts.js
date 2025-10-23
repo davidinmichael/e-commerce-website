@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
       displayProducts();
     } catch (error) {
       console.error(error);
-      toastAlert("error", "Error loading products");
+      toastAlert(
+        "Error loading products!",
+        "toast-error",
+        "fa-triangle-exclamation"
+      );
     }
   }
 

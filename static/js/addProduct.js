@@ -124,7 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter((url) => url !== "");
 
     if (!featuredUrl) {
-      alert("Please upload a featured image before submitting.");
+      toastAlert(
+        "Please upload a featured image before submitting!",
+        "toast-warning",
+        "fa-circle-exclamation"
+      );
       return;
     }
 
@@ -169,13 +173,19 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "/admin-space/products/";
       } else {
         console.error("Error response:", data);
-        alert(
-          `Error creating product: ${data.message || "Something went wrong"}`
+        toastAlert(
+          "Something went wrong!",
+          "toast-error",
+          "fa-triangle-exclamation"
         );
       }
     } catch (err) {
       console.error("Request failed:", err);
-      alert("An error occurred while submitting the form.");
+      toastAlert(
+        "An error occurred while submitting the form!",
+        "toast-error",
+        "fa-triangle-exclamation"
+      );
     }
   });
 
