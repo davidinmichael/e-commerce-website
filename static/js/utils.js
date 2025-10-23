@@ -18,7 +18,7 @@ export function toastAlert(msg, style, icon) {
   }
 
   const toast = document.createElement("div");
-  toast.classList.add("toast", style);
+  toast.classList.add("app-toast", style);
   toast.innerHTML = `
     <i class="fa-solid ${icon}"></i>
     <p>${msg}</p>

@@ -7,7 +7,6 @@ from account.choices import UserType
 from account.forms import AccountForm, LoginForm
 from account.models import Account
 
-
 class RegisterAdminView(View):
 
     def get(self, request):
