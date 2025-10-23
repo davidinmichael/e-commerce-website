@@ -1,0 +1,205 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold">Edit Product</h2>
+      <a href="{% url 'admin_products' %}" class="btn btn-outline-secondary">Back to Products</a>
+    </div>
+
+    <form
+      id="editProductForm"
+      method="POST"
+      enctype="multipart/form-data"
+      class="card p-4 shadow-sm border-0"
+    >
+      {% csrf_token %}
+      <input type="hidden" id="productId" value="{{ product.id }}" />
+
+      <div class="row g-3">
+        <!-- Title -->
+        <div class="col-md-6">
+          <label for="title" class="form-label fw-semibold">Product Title</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            value="{{ product.title }}"
+            required
+          />
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-6">
+          <label for="category" class="form-label fw-semibold">Category</label>
+          <select name="category" id="category" class="form-select">
+            <option value="{{ product.category.id }}">{{ product.category.name }}</option>
+            {% for cat in categories %}
+              {% if cat.id != product.category.id %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label for="description" class="form-label fw-semibold">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            rows="4"
+            required
+          >{{ product.description }}</textarea>
+        </div>
+
+        <!-- Features -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">Product Features</label>
+          <div id="featuresContainer">
+            {% for feature in product.features %}
+              <div class="input-group mb-2">
+                <input
+                  type="text"
+                  name="feature_{{ forloop.counter0 }}"
+                  class="form-control feature-input"
+                  value="{{ feature }}"
+                />
+                {% if forloop.last %}
+                  <button type="button" class="btn btn-outline-secondary addFeatureBtn">+</button>
+                {% endif %}
+              </div>
+            {% empty %}
+              <div class="input-group mb-2">
+                <input
+                  type="text"
+                  class="form-control feature-input"
+                  placeholder="Enter a feature (e.g. Fast charging)"
+                />
+                <button type="button" class="btn btn-outline-secondary addFeatureBtn">+</button>
+              </div>
+            {% endfor %}
+          </div>
+          <small class="text-muted">Click + to add more feature fields.</small>
+        </div>
+
+        <!-- Price -->
+        <div class="col-md-4">
+          <label for="price" class="form-label fw-semibold">Price (₦)</label>
+          <input
+            type="number"
+            step="0.01"
+            name="price"
+            id="price"
+            class="form-control"
+            value="{{ product.price|floatformat:2|cut:',' }}"
+            required
+          />
+        </div>
+
+        <!-- Discount -->
+        <div class="col-md-4">
+          <label for="discount" class="form-label fw-semibold">Discount (%)</label>
+          <input
+            type="number"
+            step="0.01"
+            name="discount"
+            id="discount"
+            class="form-control"
+            value="{{ product.discount }}"
+          />
+        </div>
+
+        <!-- Inventory -->
+        <div class="col-md-4">
+          <label for="inventory_count" class="form-label fw-semibold">Inventory Count</label>
+          <input
+            type="number"
+            name="inventory_count"
+            id="inventory_count"
+            class="form-control"
+            value="{{ product.inventory_count }}"
+          />
+        </div>
+
+        <!-- Featured Image -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">Featured Image</label>
+          {% if product.featured_image %}
+            <div class="mb-2">
+              <img
+                src="{{ product.featured_image }}"
+                alt="Featured Image"
+                style="width: 150px; height: auto; border-radius: 8px;"
+              />
+            </div>
+          {% endif %}
+          <input
+            type="file"
+            id="featuredImageInput"
+            class="form-control"
+            accept="image/*"
+          />
+          <input type="hidden" name="featured_image" id="featuredImageUrl" value="{{ product.featured_image }}" />
+          <div id="featuredImagePreview" class="mt-2"></div>
+          <small class="text-muted">Upload a new image to replace the existing one.</small>
+        </div>
+
+        <!-- Additional Images -->
+        <div class="col-12">
+          <label class="form-label fw-semibold">Additional Images</label>
+          <div class="mb-2 d-flex flex-wrap gap-2">
+            {% for image in product.images %}
+              <img src="{{ image }}" alt="Product Image" style="width: 100px; height: auto; border-radius: 8px;" />
+            {% empty %}
+              <p class="text-muted">No additional images uploaded yet.</p>
+            {% endfor %}
+          </div>
+
+          <div id="imagesContainer">
+            <div class="input-group mb-2">
+              <input
+                type="file"
+                name="image_0"
+                class="form-control image-upload"
+                accept="image/*"
+              />
+              <input type="hidden" class="image-url-field" name="image_url_0" />
+              <button type="button" class="btn btn-outline-secondary addImageBtn">+</button>
+            </div>
+          </div>
+          <small class="text-muted">Click + to add more image fields.</small>
+        </div>
+
+        <!-- Publish Toggle -->
+        <div class="col-12">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="isPublished"
+              name="is_published"
+              {% if product.is_published %}checked{% endif %}
+            />
+            <label class="form-check-label" for="isPublished">Publish this product</label>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12 text-end mt-4">
+          <button type="submit" class="btn btn-primary px-5">Update Product</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script type="module" src="{% static 'js/editProduct.js' %}"></script>
+{% endblock script %}

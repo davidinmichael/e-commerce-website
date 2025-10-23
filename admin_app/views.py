@@ -6,6 +6,8 @@ from django.views import View
 from account.choices import UserType
 from account.forms import AccountForm, LoginForm
 from account.models import Account
+from business.models import Product
+
 
 class RegisterAdminView(View):
 
@@ -74,3 +76,17 @@ class AddProductView(View):
 
     def get(self, request):
         return render(request, "admin_app/add_product.html")
+
+
+class EditProductView(View):
+    def get(self, request, slug):
+        try:
+            product = Product.objects.get(slug=slug)
+        except Product.DoesNotExist:
+            messages.error(request, "Invalid product!")
+            return redirect("admin_products")
+        context = {
+            "product": product,
+        }
+
+        return render(request, "admin_app/edit_product.html", context)

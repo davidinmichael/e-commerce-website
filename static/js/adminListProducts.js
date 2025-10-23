@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <p class="text-success small mb-1">Stock: ${product.inventory_count}</p>
           <p class="small text-secondary mb-2">Category: ${product.category.name}</p>
           <div class="d-flex">
-            <a href="#" class="mx-2 btn btn-sm btn-outline-primary"
+            <a href="/admin-space/edit-product/${product.slug}/" class="mx-2 btn btn-sm btn-outline-primary"
               ><i class="fa-solid fa-pen-to-square"></i
             ></a>
             <a href="#" class="mx-2 btn btn-sm btn-outline-secondary"
