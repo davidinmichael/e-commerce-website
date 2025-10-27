@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="#" class="mx-2 btn btn-sm btn-outline-secondary"
               ><i class="fa-solid fa-eye-slash"></i
             ></a>
-            <a href="#" class="mx-2 btn btn-sm btn-outline-danger"
+            <a href="/admin-space/delete-product/${product.slug}/" class="mx-2 btn btn-sm btn-outline-danger"
               ><i class="fa-solid fa-trash"></i
             ></a>
           </div>

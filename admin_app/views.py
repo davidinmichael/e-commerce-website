@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.shortcuts import redirect, render
 from django.views import View
+from requests import delete
 
 from account.choices import UserType
 from account.forms import AccountForm, LoginForm
@@ -90,3 +91,15 @@ class EditProductView(View):
         }
 
         return render(request, "admin_app/edit_product.html", context)
+
+
+class DeleteProduct(View):
+
+    def get(self, request, slug):
+        try:
+            product = Product.objects.get(slug=slug)
+        except Product.DoesNotExist:
+            messages.error(request, "Invalid product!")
+            return redirect("admin_products")
+        product.delete()
+        return redirect("admin_products")

@@ -6,6 +6,7 @@ from .views import (
     DashboardView,
     AddProductView,
     EditProductView,
+    DeleteProduct,
 )
 from . import views
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path("products/", views.list_products, name="admin_products"),
     path("add-product/", AddProductView.as_view(), name="add_product"),
     path("edit-product/<str:slug>/", EditProductView.as_view(), name="edit_product"),
+    path("delete-product/<str:slug>/", DeleteProduct.as_view(), name="delete_product"),
 ]
