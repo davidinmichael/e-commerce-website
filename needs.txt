@@ -1,0 +1,73 @@
+Admin Side
+
+Users:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Suspend, Approve, Change Role
+
+Category:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: None
+
+Product/Services:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Publish
+
+FAQ:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Draft
+
+Orders:
+ - List: Filter, Sort, Search
+ - Detail: Retrieve, Update, Delete
+ - Actions: Cancel
+
+Payment:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Change status (pending, successful, canceled)
+
+FAQ:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Draft
+
+Team:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Draft
+
+Blog:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Draft
+
+Testimonials:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Draft
+
+
+Client Side:
+
+Account:
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Reset password, update password
+
+Product/Services:
+ - List: Filter, Sort, Search
+ - Detail: Retrieve
+ - Actions: Add to cart, remove from cart, buy now
+
+Cart:
+ - List: Filter, Sort, Search
+ - Detail: Create, Retrieve, Update, Delete
+ - Actions: Delete/cancel
+
+Blog:
+ - List: Filter, Sort, Search
+ - Detail: Retrieve
+ - Actions: Like/Unlike
