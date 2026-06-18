@@ -7,7 +7,7 @@ from requests import delete
 from account.choices import UserType
 from account.forms import AccountForm, LoginForm
 from account.models import Account
-from business.models import Product
+from business.models import Product, Category, FAQ
 
 
 class RegisterAdminView(View):
@@ -66,7 +66,16 @@ class DashboardView(View):
         if not user.is_authenticated:
             messages.error(request, "You don't have permission to access this page.")
             return redirect("login_admin")
-        return render(request, "admin_app/dashboard.html")
+        context = {
+            "total_products": Product.objects.count(),
+            "published_products": Product.objects.filter(is_published=True).count(),
+            "unpublished_products": Product.objects.filter(is_published=False).count(),
+            "out_of_stock_products": Product.objects.filter(inventory_count=0).count(),
+            "total_categories": Category.objects.count(),
+            "total_faqs": FAQ.objects.count(),
+            "total_admin_users": Account.objects.filter(user_type=UserType.ADMIN).count(),
+        }
+        return render(request, "admin_app/dashboard.html", context)
 
 
 def list_products(request):
