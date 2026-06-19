@@ -2,7 +2,9 @@
 <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold">Product Categories</h4>
-    <a href="#addCategoryFormContainer" class="btn btn-primary">+ Add Category</a>
+    <a href="#addCategoryFormContainer" class="btn btn-primary"
+      >+ Add Category</a
+    >
   </div>
 
   <div class="row g-4">
@@ -12,13 +14,20 @@
         <div class="card-body">
           <h5>{{ category.name }}</h5>
           <p>{{ category.description }}</p>
+          <div class="d-flex">
+            <a
+              href="{% url 'delete_category' category.id %}"
+              class="mx-2 btn btn-sm btn-outline-danger"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+          </div>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
 
-   <div class="container" id="addCategoryFormContainer">
+  <div class="container" id="addCategoryFormContainer">
     <div class="d-flex justify-content-between align-items-center mb-2 mt-5">
       <h2 class="fw-bold">Add Category</h2>
     </div>
@@ -26,7 +35,7 @@
     <form
       id="addCategoryForm"
       method="POST"
-	  action="{% url 'categories' %}"
+      action="{% url 'categories' %}"
       class="card p-4 shadow-sm border-0"
     >
       {% csrf_token %}
@@ -59,7 +68,6 @@
             placeholder="Write a short description"
           ></textarea>
         </div>
-
 
         <!-- Submit -->
         <div class="col-12 text-end mt-4">

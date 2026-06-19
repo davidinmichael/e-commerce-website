@@ -82,6 +82,7 @@ class DashboardView(View):
 
 
 class CategoriesView(View):
+    """View list and create category"""
 
     def get(self, request):
         categories = Category.objects.all()
@@ -98,7 +99,24 @@ class CategoriesView(View):
         return render(request, "admin_app/categories_list.html")
 
 
+class DeleteCategory(View):
+
+    def get(self, request, pk):
+        try:
+            category = Category.objects.get(id=pk)
+        except Category.DoesNotExist:
+            messages.error(request, "Invalid category!")
+            return redirect("categories")
+        category.delete()
+        messages.success(request, "Category deleted!")
+        return redirect("categories")
+
+
 def add_category_page(request):
+    """
+    View to go to add category page
+    """
+
     return render(request, "admin_app/add_category.html")
 
 
@@ -135,4 +153,5 @@ class DeleteProduct(View):
             messages.error(request, "Invalid product!")
             return redirect("admin_products")
         product.delete()
+        messages.success(request, "Product deleted!")
         return redirect("admin_products")
