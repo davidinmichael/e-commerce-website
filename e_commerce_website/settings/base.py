@@ -94,6 +94,7 @@ TEMPLATES = [
                 "frontend.context_processors.get_contact_details",
                 "frontend.context_processors.get_faqs",
                 "frontend.context_processors.get_payment_states",
+                "frontend.context_processors.get_social_links",
             ],
         },
     },

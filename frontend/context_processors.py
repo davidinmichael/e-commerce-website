@@ -36,3 +36,14 @@ def get_payment_states(request):
         "ENABLE_LIVE_PAYSTACK": settings.ENABLE_LIVE_PAYSTACK,
         "ENABLE_ONLINE_PAYMENTS": settings.ENABLE_ONLINE_PAYMENTS,
     }
+
+
+def get_social_links(request):
+    return {
+        "TIKTOK": os.getenv("TIKTOK_LINK"),
+        "IG": os.getenv("IG_LINK"),
+        "X": os.getenv("X_LINK"),
+        "FB": os.getenv("FB_LINK"),
+        "LINKEDIN": os.getenv("LINKEDIN_LINK"),
+        "YOUTUBE": os.getenv("YOUTUBE_LINK"),
+    }
