@@ -7,7 +7,8 @@ from requests import delete
 from account.choices import UserType
 from account.forms import AccountForm, LoginForm
 from account.models import Account
-from business.models import Product, Category, FAQ
+from business.forms import CategoryForm
+from business.models import FAQ, Category, Product
 
 
 class RegisterAdminView(View):
@@ -73,9 +74,32 @@ class DashboardView(View):
             "out_of_stock_products": Product.objects.filter(inventory_count=0).count(),
             "total_categories": Category.objects.count(),
             "total_faqs": FAQ.objects.count(),
-            "total_admin_users": Account.objects.filter(user_type=UserType.ADMIN).count(),
+            "total_admin_users": Account.objects.filter(
+                user_type=UserType.ADMIN
+            ).count(),
         }
         return render(request, "admin_app/dashboard.html", context)
+
+
+class CategoriesView(View):
+
+    def get(self, request):
+        categories = Category.objects.all()
+        context = {"categories": categories}
+        return render(request, "admin_app/categories_list.html", context)
+
+    def post(self, request):
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category = form.save()
+            messages.success(request, f"{category.name} added!")
+            return render(request, "admin_app/categories_list.html")
+        messages.error(request, "Error adding category!")
+        return render(request, "admin_app/categories_list.html")
+
+
+def add_category_page(request):
+    return render(request, "admin_app/add_category.html")
 
 
 def list_products(request):
